@@ -36,7 +36,7 @@ public class CourseController {
 		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
 	}
 	
-	// send the course list from database to view
+	// send the course list from database to view new sending
 	@GetMapping(value = {"/list","/"})
 	public String getCourse(ModelMap theModel)
 	{
