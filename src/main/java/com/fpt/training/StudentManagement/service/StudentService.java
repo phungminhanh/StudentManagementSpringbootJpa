@@ -7,7 +7,7 @@ import com.fpt.training.StudentManagement.models.Student;
 public interface StudentService {
 	public List<Student> getStudents();
 
-	public void saveStudent(Student theStudent);
+	public void saveStudent(Student theStudent/*, String courseId*/);
 
 	public Student getStudent(String theId);
 

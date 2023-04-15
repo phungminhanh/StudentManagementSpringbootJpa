@@ -7,7 +7,6 @@ import java.util.Set;
 
 import com.fpt.training.StudentManagement.utils.Validator;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -43,11 +42,12 @@ public class Course  implements Serializable, Statistical {
 	@Column(name="enrollment")
 	@NotNull(message = "is require")
 	private int enrollment;
-	
-	@OneToMany(fetch=FetchType.EAGER,
-			   mappedBy="course",
-			   cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-						 CascadeType.DETACH, CascadeType.REFRESH})
+    	
+//	@OneToMany(fetch=FetchType.EAGER,
+//			   mappedBy="course",
+//			   cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+//						 CascadeType.DETACH, CascadeType.REFRESH})
+	@OneToMany(mappedBy="course" , fetch=FetchType.LAZY )
 	private Set<Student> students;
 	
 	public Course(String id, String title, Set<Student> students, double credit, int enrollment) {

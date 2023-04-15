@@ -5,7 +5,6 @@ import java.io.Serializable;
 
 import com.fpt.training.StudentManagement.utils.Validator;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -29,6 +28,14 @@ public class Student implements Serializable {
 	@NotNull(message = "is require")
 	@Pattern(regexp = Validator.VALID_STUDENT_ID_REGEX, message = "Student Id: 6 digits")
 	private String id;
+	
+	//@Column(name = "course_id")
+	//private String courseId;
+
+	
+//public void setCourseId(String courseId) {
+		//this.courseId = courseId;
+	//}
 
 	@Column(name = "student_name")
 	@NotNull(message = "is require")
@@ -47,9 +54,11 @@ public class Student implements Serializable {
 	@Min(value = 0, message = "must be greater than or equal to zero")
 	@Max(value = 10, message = "must be less than or equal to 10")
 	private double gpa;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "course_id")
+    
+	 @ManyToOne
+	//@ManyToOne(cascade = CascadeType.ALL)
+	//@JoinColumn(name = "course_id",  insertable =  false, updatable = false)
+	@JoinColumn(name = "course_id" )
 	private Course course;
 
 	public Student(String name, String phone, String gender, String id, double gpa) {

@@ -63,6 +63,9 @@ public class CourseController {
 	// delete the seleted course based on courseID then redirect to course list page
 	@GetMapping("/delete")
 	public String deleteCourse(ModelMap theModel,@RequestParam("courseId") String theId){
+//		for (Student patient : courseService.getCourse(theId).getStudents()) {
+//	    patient.setCourse(null);
+//		}
 		courseService.deleteCourse(theId); 
 		return "redirect:/course/list";
 	}

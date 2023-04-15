@@ -75,8 +75,19 @@ public class StudentController {
 				theModel.addAttribute("message", "The course is full !");
 				return "student-form";
 			}else{
-			theStudent.setCourse(theCourse);
-			studentService.saveStudent(theStudent);
+				theCourse.setTitle("hello");
+//				theStudent.setCourse(theCourse);
+				//System.out.println(theCourse.getStudents().size());
+			//Set<Student>a=theCourse.getStudents();
+			//a.add(theStudent);
+		    //System.out.println(a);
+			 
+			
+	      theStudent.setCourse(theCourse);
+				
+			studentService.saveStudent(theStudent/*, courseId*/);
+			
+			//System.out.println(theCourse.getStudents().size());
 			return "redirect:/student/" + courseId + "/list";
 		}
 		}

@@ -8,12 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fpt.training.StudentManagement.models.Course;
 import com.fpt.training.StudentManagement.repository.CourseRepository;
 import com.fpt.training.StudentManagement.service.CourseService;
+
+import jakarta.persistence.EntityManager;
 @Service
 public class CourseServiceImpl implements CourseService{
 	// Dependency inject the CourseDAO
 		@Autowired
 		private CourseRepository courseRepository;
-		
+		@Autowired
+		private EntityManager em;
 		@Override
 		@Transactional
 		public List<Course> getCourses() {
@@ -23,8 +26,16 @@ public class CourseServiceImpl implements CourseService{
 		@Override
 		@Transactional
 		public void saveCourse(Course theCourse) {
-			courseRepository.save(theCourse);
+//			Student a = new Student("a","0834712000","male","123457",1);
+//			Set<Student> b = new HashSet<>();
+//			b.add(a);
+//			b.add(new Student("a","0834712000","male","123458",1));
+//			b.add(new Student("a","0834712000","male","123459",1));
+//			theCourse.setStudents(b);
+//			a.setCourse(theCourse);
 			
+			courseRepository.save(theCourse);
+			//b.clear();
 		}
 
 		@Override
@@ -34,7 +45,7 @@ public class CourseServiceImpl implements CourseService{
 		}
 
 		@Override
-		@Transactional
+		//@Transactional
 		public void deleteCourse(String theId) {
 			courseRepository.deleteById(theId);
 		}
